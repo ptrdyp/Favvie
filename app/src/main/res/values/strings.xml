@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Favvie</string>
+    <string name="searchbar_hint">Mau cari film apa?</string>
+    <string name="favorite_text">Favorite</string>
+    <string name="setting_text">Setting</string>
+    <string name="movie_title">Judul Film</string>
+    <string name="tools_rating">7.6</string>
+    <string name="sinopsis">Sinopsis Film</string>
+    <string name="genre">Genre</string>
+    <string name="poster_film">Poster Film</string>
+    <string name="error_loading_data">Failed to load data. Please try again later.</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="review">Review</string>
+    <string name="slash">/</string>
+    <string name="tambah_ke_favorit">Tambah ke favorit</string>
+    <string name="detail_movie">Detail Movie</string>
+
 </resources>

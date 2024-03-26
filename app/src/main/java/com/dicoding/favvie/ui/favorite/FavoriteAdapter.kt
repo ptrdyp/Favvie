@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dicoding.favvie.data.local.entity.FavoriteEntity
+import com.dicoding.favvie.core.data.local.entity.FavoriteEntity
 import com.dicoding.favvie.databinding.ItemRowMovieBinding
 import com.dicoding.favvie.ui.detail.DetailActivity
 

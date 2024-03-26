@@ -1,11 +1,11 @@
-package com.dicoding.favvie.data.local
+package com.dicoding.favvie.core.data
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import com.dicoding.favvie.data.local.entity.FavoriteEntity
-import com.dicoding.favvie.data.local.room.FavoriteDao
-import com.dicoding.favvie.data.local.room.FavoriteDatabase
-import com.dicoding.favvie.data.remote.response.ResultsItem
+import com.dicoding.favvie.core.data.local.entity.FavoriteEntity
+import com.dicoding.favvie.core.data.local.room.FavoriteDao
+import com.dicoding.favvie.core.data.local.room.FavoriteDatabase
+import com.dicoding.favvie.core.data.remote.response.ResultsItem
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 

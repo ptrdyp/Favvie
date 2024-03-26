@@ -1,31 +1,31 @@
-package com.dicoding.favvie.data.remote.response
+package com.dicoding.favvie.core.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
 data class DetailMovieResponse(
 
-	@field:SerializedName("title")
+    @field:SerializedName("title")
 	val title: String? = null,
 
-	@field:SerializedName("genres")
+    @field:SerializedName("genres")
 	val genres: List<GenresItem?>? = null,
 
-	@field:SerializedName("id")
+    @field:SerializedName("id")
 	val id: Int? = null,
 
-	@field:SerializedName("vote_count")
+    @field:SerializedName("vote_count")
 	val voteCount: Int? = null,
 
-	@field:SerializedName("overview")
+    @field:SerializedName("overview")
 	val overview: String? = null,
 
-	@field:SerializedName("poster_path")
+    @field:SerializedName("poster_path")
 	val posterPath: String? = null,
 
-	@field:SerializedName("vote_average")
+    @field:SerializedName("vote_average")
 	val voteAverage: Float? = null,
 
-)
+    )
 
 data class GenresItem(
 

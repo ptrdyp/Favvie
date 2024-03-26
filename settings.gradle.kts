@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Favvie"
 include(":app")
- 
+include(":core")

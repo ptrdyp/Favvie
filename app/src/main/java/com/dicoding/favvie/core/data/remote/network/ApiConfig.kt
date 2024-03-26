@@ -1,4 +1,4 @@
-package com.dicoding.favvie.data.remote.retrofit
+package com.dicoding.favvie.core.data.remote.network
 
 import com.dicoding.favvie.BuildConfig
 import okhttp3.Interceptor

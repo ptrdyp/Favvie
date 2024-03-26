@@ -1,10 +1,10 @@
-package com.dicoding.favvie.data.local.room
+package com.dicoding.favvie.core.data.local.room
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.dicoding.favvie.data.local.entity.FavoriteEntity
+import com.dicoding.favvie.core.data.local.entity.FavoriteEntity
 
 @Database(entities = [FavoriteEntity.Item::class], version = 1)
 abstract class FavoriteDatabase : RoomDatabase() {

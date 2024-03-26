@@ -5,10 +5,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dicoding.favvie.data.local.FavoriteRepository
-import com.dicoding.favvie.data.local.entity.FavoriteEntity
-import com.dicoding.favvie.data.remote.response.DetailMovieResponse
-import com.dicoding.favvie.data.remote.retrofit.ApiConfig
+import com.dicoding.favvie.core.data.FavoriteRepository
+import com.dicoding.favvie.core.data.local.entity.FavoriteEntity
+import com.dicoding.favvie.core.data.remote.response.DetailMovieResponse
+import com.dicoding.favvie.core.data.remote.network.ApiConfig
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Callback

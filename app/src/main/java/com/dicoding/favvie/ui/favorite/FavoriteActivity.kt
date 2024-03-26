@@ -9,9 +9,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.favvie.R
-import com.dicoding.favvie.data.local.entity.FavoriteEntity
+import com.dicoding.favvie.core.data.local.entity.FavoriteEntity
 import com.dicoding.favvie.databinding.ActivityFavoriteBinding
-import com.dicoding.favvie.ui.ViewModelFactory
+import com.dicoding.favvie.presentation.ViewModelFactory
 import com.dicoding.favvie.ui.detail.DetailActivity
 
 class FavoriteActivity : AppCompatActivity() {

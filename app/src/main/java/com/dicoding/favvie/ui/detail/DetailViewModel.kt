@@ -5,9 +5,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.dicoding.favvie.data.response.DetailMovieResponse
-import com.dicoding.favvie.data.retrofit.ApiConfig
+import com.dicoding.favvie.data.local.FavoriteRepository
+import com.dicoding.favvie.data.local.entity.FavoriteEntity
+import com.dicoding.favvie.data.remote.response.DetailMovieResponse
+import com.dicoding.favvie.data.remote.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Callback
@@ -22,6 +23,8 @@ class DetailViewModel(application: Application) : ViewModel() {
 
     private val _toastMessage = MutableLiveData<String>()
     val toastMessage: LiveData<String> get() = _toastMessage
+
+    private val favoriteRepository: FavoriteRepository = FavoriteRepository(application)
 
     init {
         getDetailMovie()
@@ -52,25 +55,14 @@ class DetailViewModel(application: Application) : ViewModel() {
         })
     }
 
-    class ViewModelFactory(private val application: Application) : ViewModelProvider.NewInstanceFactory() {
-        override fun <view : ViewModel> create(modelClass: Class<view>): view {
-            if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
-                return DetailViewModel(application) as view
-            }
-            throw IllegalArgumentException("Unknown ViewModel Class: ${modelClass.name}")
-        }
+    fun getDataById(movie: Int) = favoriteRepository.getDataById(movie)
 
-        companion object {
-            private var INSTANCE: ViewModelFactory? = null
-            fun getInstance(application: Application): ViewModelFactory {
-                if (INSTANCE == null) {
-                    synchronized(ViewModelFactory::class.java) {
-                        INSTANCE = ViewModelFactory(application)
-                    }
-                }
-                return INSTANCE as ViewModelFactory
-            }
-        }
+    fun insert(movie: FavoriteEntity.Item) {
+        favoriteRepository.insert(movie)
+    }
+
+    fun delete(movie: FavoriteEntity.Item) {
+        favoriteRepository.delete(movie)
     }
     companion object{
         private const val TAG = "DetailViewModel"

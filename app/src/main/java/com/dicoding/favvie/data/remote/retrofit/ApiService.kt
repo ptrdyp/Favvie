@@ -1,7 +1,7 @@
-package com.dicoding.favvie.data.retrofit
+package com.dicoding.favvie.data.remote.retrofit
 
-import com.dicoding.favvie.data.response.DetailMovieResponse
-import com.dicoding.favvie.data.response.MovieResponse
+import com.dicoding.favvie.data.remote.response.DetailMovieResponse
+import com.dicoding.favvie.data.remote.response.MovieResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

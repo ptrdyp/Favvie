@@ -14,5 +14,9 @@
     <string name="slash">/</string>
     <string name="tambah_ke_favorit">Tambah ke favorit</string>
     <string name="detail_movie">Detail Movie</string>
+    <string name="favorite_movie">Favorite Movie</string>
+    <string name="gagal_memuat_data_silakan_coba_kembali">Gagal memuat data, silakan coba kembali</string>
+    <string name="favorite_removed">Favorite Removed</string>
+    <string name="added_to_favorite">Added to Favorite</string>
 
 </resources>

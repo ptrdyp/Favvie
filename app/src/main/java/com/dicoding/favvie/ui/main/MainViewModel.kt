@@ -1,13 +1,12 @@
 package com.dicoding.favvie.ui.main
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dicoding.favvie.data.response.MovieResponse
-import com.dicoding.favvie.data.response.ResultsItem
-import com.dicoding.favvie.data.retrofit.ApiConfig
+import com.dicoding.favvie.data.remote.response.MovieResponse
+import com.dicoding.favvie.data.remote.response.ResultsItem
+import com.dicoding.favvie.data.remote.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -57,7 +56,7 @@ class MainViewModel : ViewModel() {
             override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                 _isLoading.value = false
                 Log.e("MainViewModel", "Failed to fetch movie data", t)
-                _toastMessage.value = "Failed to fetch movie data: ${t.message}"
+                _toastMessage.value = "Failed to fetch movie data"
             }
         })
     }

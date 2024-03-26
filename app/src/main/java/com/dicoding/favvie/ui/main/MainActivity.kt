@@ -6,12 +6,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.favvie.R
-import com.dicoding.favvie.data.response.ResultsItem
+import com.dicoding.favvie.data.remote.response.ResultsItem
 import com.dicoding.favvie.databinding.ActivityMainBinding
 import com.dicoding.favvie.ui.detail.DetailActivity
+import com.dicoding.favvie.ui.favorite.FavoriteActivity
+import com.dicoding.favvie.ui.setting.SettingActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,11 +48,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter.setOnItemClickCallback(object : MovieAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ResultsItem) {
-                Intent(this@MainActivity, DetailActivity::class.java).also {
-                    it.putExtra(DetailActivity.EXTRA_ID, data.id)
-                    it.putExtra(Intent.EXTRA_TITLE, data.title)
-                    startActivity(it)
-                }
+                startDetailActivity(data)
             }
         })
 
@@ -74,15 +71,34 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        binding.searchBar.inflateMenu(R.menu.option_menu)
-//        binding.searchBar.setOnMenuItemClickListener { menuItem ->
-//            when (menuItem.itemId) {
-//                R.id.list_fav -> {
-//                    val intent
-//                }
-//            }
-//        }
+        binding.searchBar.inflateMenu(R.menu.option_menu)
+        binding.searchBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.list_fav -> {
+                    val intentFav = Intent(this, FavoriteActivity::class.java)
+                    startActivity(intentFav)
+                    true
+                }
+                R.id.mode -> {
+                    val intentMode = Intent(this, SettingActivity::class.java)
+                    startActivity(intentMode)
+                    true
+                }
+                else -> false
+            }
+        }
 
+    }
+
+    private fun startDetailActivity(data: ResultsItem) {
+        Intent(this@MainActivity, DetailActivity::class.java).also {
+            it.putExtra(DetailActivity.EXTRA_ID, data.id)
+            it.putExtra(DetailActivity.EXTRA_TITLE, data.title)
+            it.putExtra(DetailActivity.EXTRA_RATING, data.voteAverage)
+            it.putExtra(DetailActivity.EXTRA_POSTER, data.posterPath)
+            it.putExtra(DetailActivity.EXTRA_OVERVIEW, data.overview)
+            startActivity(it)
+        }
     }
 
     private fun showLoading(state: Boolean) {

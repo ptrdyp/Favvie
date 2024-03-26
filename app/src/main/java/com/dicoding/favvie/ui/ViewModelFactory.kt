@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.favvie.ui.detail.DetailViewModel
 import com.dicoding.favvie.ui.favorite.FavoriteViewModel
+import com.dicoding.favvie.ui.setting.SettingPreferences
+import com.dicoding.favvie.ui.setting.SettingViewModel
 
 class ViewModelFactory(private val application: Application) : ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -27,4 +29,14 @@ class ViewModelFactory(private val application: Application) : ViewModelProvider
             return INSTANCE as ViewModelFactory
         }
     }
+}
+
+class SettingViewModelFactory(private val pref: SettingPreferences) : ViewModelProvider.NewInstanceFactory() {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(SettingViewModel::class.java)) {
+            return SettingViewModel(pref) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel Class: ${modelClass.name}")
+    }
+
 }

@@ -18,5 +18,7 @@
     <string name="gagal_memuat_data_silakan_coba_kembali">Gagal memuat data, silakan coba kembali</string>
     <string name="favorite_removed">Favorite Removed</string>
     <string name="added_to_favorite">Added to Favorite</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="setting">Setting</string>
 
 </resources>

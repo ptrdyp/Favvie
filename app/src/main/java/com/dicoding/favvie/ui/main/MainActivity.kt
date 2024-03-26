@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.favvie.R
 import com.dicoding.favvie.data.remote.response.ResultsItem
@@ -13,6 +15,9 @@ import com.dicoding.favvie.databinding.ActivityMainBinding
 import com.dicoding.favvie.ui.detail.DetailActivity
 import com.dicoding.favvie.ui.favorite.FavoriteActivity
 import com.dicoding.favvie.ui.setting.SettingActivity
+import com.dicoding.favvie.ui.setting.SettingPreferences
+import com.dicoding.favvie.ui.setting.dataStore
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +29,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val settingPreferences = SettingPreferences.getInstance(dataStore)
+
+        lifecycleScope.launch {
+            settingPreferences.getThemeSetting().collect { isDarkModeActive ->
+                if (isDarkModeActive) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                }
+            }
+        }
 
         adapter = MovieAdapter()
 

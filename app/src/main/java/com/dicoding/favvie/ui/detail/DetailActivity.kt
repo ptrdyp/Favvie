@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.dicoding.favvie.R
-import com.dicoding.favvie.core.data.local.entity.FavoriteEntity
+import com.dicoding.core.data.local.entity.FavoriteEntity
 import com.dicoding.favvie.databinding.ActivityDetailBinding
 import com.dicoding.favvie.presentation.ViewModelFactory
 

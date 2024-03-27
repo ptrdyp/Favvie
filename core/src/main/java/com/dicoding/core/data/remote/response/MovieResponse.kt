@@ -1,4 +1,4 @@
-package com.dicoding.favvie.core.data.remote.response
+package com.dicoding.core.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 

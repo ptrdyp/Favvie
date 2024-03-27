@@ -1,4 +1,4 @@
-package com.dicoding.favvie.core.data.local.entity
+package com.dicoding.core.data.local.entity
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

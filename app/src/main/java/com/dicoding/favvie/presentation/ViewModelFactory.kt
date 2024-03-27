@@ -3,7 +3,7 @@ package com.dicoding.favvie.presentation
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.favvie.core.data.local.room.SettingPreferences
+import com.dicoding.core.data.local.room.SettingPreferences
 import com.dicoding.favvie.ui.detail.DetailViewModel
 import com.dicoding.favvie.ui.favorite.FavoriteViewModel
 import com.dicoding.favvie.ui.setting.SettingViewModel

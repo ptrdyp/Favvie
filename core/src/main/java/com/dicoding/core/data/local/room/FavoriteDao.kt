@@ -1,4 +1,4 @@
-package com.dicoding.favvie.core.data.local.room
+package com.dicoding.core.data.local.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -6,8 +6,8 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.dicoding.favvie.core.data.local.entity.FavoriteEntity
-import com.dicoding.favvie.core.data.remote.response.ResultsItem
+import com.dicoding.core.data.local.entity.FavoriteEntity
+import com.dicoding.core.data.remote.response.ResultsItem
 
 @Dao
 interface FavoriteDao {

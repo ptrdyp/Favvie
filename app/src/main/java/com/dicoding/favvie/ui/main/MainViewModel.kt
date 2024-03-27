@@ -4,9 +4,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dicoding.favvie.core.data.remote.response.MovieResponse
-import com.dicoding.favvie.core.data.remote.response.ResultsItem
-import com.dicoding.favvie.core.data.remote.network.ApiConfig
+import com.dicoding.core.data.remote.response.MovieResponse
+import com.dicoding.core.data.remote.response.ResultsItem
+import com.dicoding.core.data.remote.network.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

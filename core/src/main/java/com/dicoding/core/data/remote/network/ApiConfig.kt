@@ -1,6 +1,6 @@
-package com.dicoding.favvie.core.data.remote.network
+package com.dicoding.core.data.remote.network
 
-import com.dicoding.favvie.BuildConfig
+import com.dicoding.core.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

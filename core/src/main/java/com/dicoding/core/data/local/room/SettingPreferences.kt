@@ -1,4 +1,4 @@
-package com.dicoding.favvie.core.data.local.room
+package com.dicoding.core.data.local.room
 
 import android.content.Context
 import androidx.datastore.core.DataStore

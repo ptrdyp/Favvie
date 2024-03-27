@@ -5,9 +5,9 @@ plugins {
     id("com.google.devtools.ksp")
 }
 
-//apply {
-//    from ("../shared_dependencies.gradle")
-//}
+apply {
+    from ("../shared_dependencies.gradle")
+}
 
 android {
     namespace = "com.dicoding.core"

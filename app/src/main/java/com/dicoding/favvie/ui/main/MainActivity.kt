@@ -13,12 +13,11 @@ import com.dicoding.favvie.R
 import com.dicoding.core.data.remote.response.ResultsItem
 import com.dicoding.favvie.databinding.ActivityMainBinding
 import com.dicoding.favvie.presentation.MovieAdapter
-import com.dicoding.favvie.ui.detail.DetailActivity
-import com.dicoding.favvie.ui.favorite.FavoriteActivity
 import com.dicoding.favvie.ui.setting.SettingActivity
 import com.dicoding.core.data.local.room.SettingPreferences
 import com.dicoding.core.data.local.room.dataStore
 import kotlinx.coroutines.launch
+import com.dicoding.favvie.ui.detail.DetailActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -93,7 +92,7 @@ class MainActivity : AppCompatActivity() {
         binding.searchBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.list_fav -> {
-                    val intentFav = Intent(this, FavoriteActivity::class.java)
+                    val intentFav = (Intent(this, Class.forName("com.dicoding.favvie.favorite.FavoriteActivity")))
                     startActivity(intentFav)
                     true
                 }

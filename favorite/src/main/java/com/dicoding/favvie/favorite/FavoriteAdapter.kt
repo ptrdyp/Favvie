@@ -1,4 +1,4 @@
-package com.dicoding.favvie.ui.favorite
+package com.dicoding.favvie.favorite
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.core.data.local.entity.FavoriteEntity
-import com.dicoding.favvie.databinding.ItemRowMovieBinding
+import com.dicoding.core.databinding.ItemRowMovieBinding
 import com.dicoding.favvie.ui.detail.DetailActivity
 
 class FavoriteAdapter(

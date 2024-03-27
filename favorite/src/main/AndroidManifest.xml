@@ -4,7 +4,7 @@
 
     <dist:module
         dist:instant="false"
-        dist:title="@string/title_core">
+        dist:title="@string/title_favorite">
         <dist:delivery>
             <dist:on-demand />
         </dist:delivery>
@@ -12,7 +12,7 @@
     </dist:module>
 
     <application>
-        <activity android:name="com.dicoding.favvie.ui.detail.DetailActivity" />
+        <activity android:name=".FavoriteActivity" />
     </application>
 
 </manifest>

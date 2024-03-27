@@ -9,16 +9,17 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import com.dicoding.favvie.R
+import com.dicoding.core.R
 import com.dicoding.core.data.local.entity.FavoriteEntity
-import com.dicoding.favvie.databinding.ActivityDetailBinding
-import com.dicoding.favvie.presentation.ViewModelFactory
+import com.dicoding.core.databinding.ActivityDetailBinding
+import com.dicoding.favvie.presentation.DetailViewModelFactory
+import com.dicoding.favvie.presentation.DetailViewModel
 
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
     private val detailViewModel by viewModels<DetailViewModel> {
-        ViewModelFactory.getInstance(application)
+        DetailViewModelFactory.getInstance(application)
     }
 
     private var isFavorite: Boolean = false

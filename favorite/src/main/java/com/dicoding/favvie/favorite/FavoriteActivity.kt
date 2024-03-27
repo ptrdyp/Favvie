@@ -1,4 +1,4 @@
-package com.dicoding.favvie.ui.favorite
+package com.dicoding.favvie.favorite
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,18 +6,18 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.favvie.R
 import com.dicoding.core.data.local.entity.FavoriteEntity
-import com.dicoding.favvie.databinding.ActivityFavoriteBinding
-import com.dicoding.favvie.presentation.ViewModelFactory
+import com.dicoding.favvie.favorite.databinding.ActivityFavoriteBinding
 import com.dicoding.favvie.ui.detail.DetailActivity
 
 class FavoriteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFavoriteBinding
-    private lateinit var favoriteViewModel: FavoriteViewModel
+    private val favoriteViewModel by viewModels<FavoriteViewModel> {
+        FavoriteViewModelFactory.getInstance(application)
+    }
     private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
             val dataDeleted = result.data?.getBooleanExtra("data_deleted", false) ?: false
@@ -36,7 +36,6 @@ class FavoriteActivity : AppCompatActivity() {
 
         supportActionBar?.title = getString(R.string.favorite_movie)
 
-        favoriteViewModel = obtainViewModel(this)
         favoriteViewModel.getAllFavorites().observe(this) { list ->
             if (list.isNotEmpty()) {
                 setFavorite(list)
@@ -49,11 +48,6 @@ class FavoriteActivity : AppCompatActivity() {
         favoriteViewModel.isLoading.observe(this) {
             showLoading(it)
         }
-    }
-
-    private fun obtainViewModel(activity: AppCompatActivity): FavoriteViewModel {
-        val factory = ViewModelFactory.getInstance(activity.application)
-        return ViewModelProvider(activity, factory)[FavoriteViewModel::class.java]
     }
 
     private fun setFavorite(favoriteEntities: List<FavoriteEntity.Item>) {

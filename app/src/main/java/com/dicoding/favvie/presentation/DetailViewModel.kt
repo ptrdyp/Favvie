@@ -1,4 +1,4 @@
-package com.dicoding.favvie.ui.detail
+package com.dicoding.favvie.presentation
 
 import android.app.Application
 import android.util.Log
@@ -24,7 +24,8 @@ class DetailViewModel(application: Application) : ViewModel() {
     private val _toastMessage = MutableLiveData<String>()
     val toastMessage: LiveData<String> get() = _toastMessage
 
-    private val favoriteRepository: FavoriteRepository = FavoriteRepository(application)
+    private val favoriteRepository: FavoriteRepository =
+        FavoriteRepository(application)
 
     init {
         getDetailMovie()

@@ -5,10 +5,11 @@ import android.os.Bundle
 import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.favvie.R
+import com.dicoding.core.R
 import com.dicoding.core.data.local.room.SettingPreferences
-import com.dicoding.favvie.presentation.SettingViewModelFactory
 import com.dicoding.core.data.local.room.dataStore
+import com.dicoding.favvie.presentation.SettingViewModel
+import com.dicoding.favvie.presentation.SettingViewModelFactory
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 class SettingActivity : AppCompatActivity() {
@@ -21,7 +22,9 @@ class SettingActivity : AppCompatActivity() {
         val switchTheme = findViewById<SwitchMaterial>(R.id.switch_theme)
 
         val pref = SettingPreferences.getInstance(application.dataStore)
-        val settingViewModel = ViewModelProvider(this, SettingViewModelFactory(pref))[SettingViewModel::class.java]
+        val settingViewModel = ViewModelProvider(this,
+            SettingViewModelFactory(pref)
+        )[SettingViewModel::class.java]
 
         settingViewModel.getThemeSettings().observe(this) {
             if (it) {

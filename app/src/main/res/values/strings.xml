@@ -20,5 +20,6 @@
     <string name="added_to_favorite">Added to Favorite</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="setting">Setting</string>
+    <string name="title_favorite">Favorite</string>
 
 </resources>

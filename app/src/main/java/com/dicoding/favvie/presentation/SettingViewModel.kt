@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.dicoding.core.data.local.room.SettingPreferences
+import com.dicoding.favvie.core.data.local.room.SettingPreferences
 import kotlinx.coroutines.launch
 
 class SettingViewModel(private val pref: SettingPreferences) : ViewModel() {

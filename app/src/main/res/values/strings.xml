@@ -21,5 +21,6 @@
     <string name="dark_mode">Dark Mode</string>
     <string name="setting">Setting</string>
     <string name="title_favorite">Favorite</string>
+    <string name="oops_something_went_wrong">Oops.. Something went wrong!</string>
 
 </resources>

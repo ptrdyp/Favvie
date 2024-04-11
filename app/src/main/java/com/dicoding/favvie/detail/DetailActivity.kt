@@ -37,15 +37,13 @@ class DetailActivity : AppCompatActivity() {
             tvDetailSinopsis.text = detailMovie?.overview
         }
 
-        var statusFavorite = detailMovie?.isFavorite
-        if (statusFavorite != null) {
+        detailMovie?.let { movie ->
+            var statusFavorite = movie.isFavorite
             setStatusFavorite(statusFavorite)
             binding.fabFavorite.setOnClickListener {
-                statusFavorite = !statusFavorite!!
-                if (detailMovie != null) {
-                    detailViewModel.setFavoriteMovie(detailMovie, statusFavorite!!)
-                }
-                setStatusFavorite(statusFavorite!!)
+                statusFavorite = !statusFavorite
+                detailViewModel.setFavoriteMovie(detailMovie, statusFavorite)
+                setStatusFavorite(statusFavorite)
             }
         }
     }

@@ -3,7 +3,6 @@ package com.dicoding.favvie.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
@@ -58,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                     is Resource.Loading<*> -> binding.progressBar.visibility = View.VISIBLE
                     is Resource.Success<*> -> {
                         binding.progressBar.visibility = View.GONE
-                        movieAdapter.setList(movie.data)
+                        movie.data?.let { movieAdapter.setList(it) }
                     }
                     is Resource.Error<*> -> {
                         with(binding) {
@@ -81,7 +80,6 @@ class MainActivity : AppCompatActivity() {
             searchView.setupWithSearchBar(searchBar)
             searchView.editText.setOnEditorActionListener { textView, actionId, event ->
                 val query = binding.searchView.text.toString()
-                Log.d("MainActivity", "Search query: $query")
                 binding.searchBar.setText(query)
                 mainViewModel.searchMovie(query).observe(this@MainActivity) { movies ->
                     movieAdapter.setList(movies)

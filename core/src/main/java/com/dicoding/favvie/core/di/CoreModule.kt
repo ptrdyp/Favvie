@@ -39,12 +39,20 @@ val networkModule = module {
                 .build()
             chain.proceed(requestHeaders)
         }
-        OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+
+        val okHttpClientBuilder = OkHttpClient.Builder()
             .addInterceptor(authInterceptor)
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
-            .build()
+
+        if (BuildConfig.DEBUG) {
+            val loggingInterceptor = HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
+            okHttpClientBuilder.addInterceptor(loggingInterceptor)
+        }
+
+        okHttpClientBuilder.build()
     }
 
     single {

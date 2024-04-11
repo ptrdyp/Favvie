@@ -3,6 +3,7 @@ package com.dicoding.favvie.core.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.core.R
@@ -13,13 +14,6 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MyViewHolder>() {
 
     private val listMovie = ArrayList<Movie>()
     var onItemClick: ((Movie) -> Unit)? = null
-
-    fun setList(newList: Any?) {
-        if (newList == null) return
-        listMovie.clear()
-        listMovie.addAll(newList as Collection<Movie>)
-        notifyDataSetChanged()
-    }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemRowMovieBinding.bind(itemView)
@@ -54,4 +48,23 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MyViewHolder>() {
         holder.bind(movie)
     }
 
+    fun setList(newList: List<Movie>) {
+        val diffResult = DiffUtil.calculateDiff(MovieDiffCallback(listMovie, newList))
+        listMovie.clear()
+        listMovie.addAll(newList)
+        diffResult.dispatchUpdatesTo(this)
+    }
+
+    class MovieDiffCallback(private val oldList: List<Movie>, private val newList: List<Movie>) : DiffUtil.Callback() {
+        override fun getOldListSize(): Int = oldList.size
+        override fun getNewListSize(): Int = newList.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].id == newList[newItemPosition].id
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition] == newList[newItemPosition]
+        }
+    }
 }

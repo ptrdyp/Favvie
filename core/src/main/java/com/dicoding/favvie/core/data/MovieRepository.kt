@@ -1,6 +1,5 @@
 package com.dicoding.favvie.core.data
 
-import android.util.Log
 import com.dicoding.favvie.core.data.local.LocalDataSource
 import com.dicoding.favvie.core.data.remote.RemoteDataSource
 import com.dicoding.favvie.core.data.remote.network.ApiResponse
@@ -53,7 +52,6 @@ class MovieRepository(
 
     override fun searchMovie(query: String): Flow<List<Movie>> =
         flow {
-            Log.d("MovieRepository", "searchMovie called with query: $query")
             when (val apiService = remoteDataSource.searchMovie(query).first()) {
                 is ApiResponse.Success<*> -> {
                     val searchResult = apiService.data
@@ -62,16 +60,13 @@ class MovieRepository(
                     searchResultEntities.forEach { movie ->
                         movie.isFavorite = favoriteMovies.containsKey(movie.id)
                     }
-                    Log.d("MovieRepository", "Received ${searchResult.size} movies from API")
                     localDataSource.insertMovie(searchResultEntities)
                     emit(DataMapper.mapMovieEntitiesToDomain(searchResultEntities))
                 }
                 is ApiResponse.Empty -> {
-                    Log.d("MovieRepository", "No movies found for query: $query")
                     emit(emptyList())
                 }
                 is ApiResponse.Error -> {
-                    Log.e("MovieRepository", "Error searching movies: ${apiService.errorMessage}")
                     error("Error has found")
                 }
             }

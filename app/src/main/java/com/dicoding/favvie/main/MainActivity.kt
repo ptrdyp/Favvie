@@ -1,5 +1,6 @@
 package com.dicoding.favvie.main
 
+import android.content.BroadcastReceiver
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,6 +21,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var broadcastReceiver: BroadcastReceiver
     private lateinit var binding: ActivityMainBinding
     private lateinit var movieAdapter: MovieAdapter
     private val mainViewModel: MainViewModel by viewModel()
@@ -106,5 +108,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onStop() {
+        super.onStop()
+        unregisterReceiver(broadcastReceiver)
     }
 }

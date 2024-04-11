@@ -56,11 +56,15 @@ class MovieRepository(
             Log.d("MovieRepository", "searchMovie called with query: $query")
             when (val apiService = remoteDataSource.searchMovie(query).first()) {
                 is ApiResponse.Success<*> -> {
-                    val data = apiService.data
-                    val movies = DataMapper.mapMovieResponsesToEntities(data as List<ResultsItem>)
-                    Log.d("MovieRepository", "Received ${movies.size} movies from API")
-                    localDataSource.insertMovie(movies)
-                    emit(DataMapper.mapMovieEntitiesToDomain(movies))
+                    val searchResult = apiService.data
+                    val favoriteMovies = localDataSource.getFavoriteMovie().first().associateBy { it.id }
+                    val searchResultEntities = DataMapper.mapMovieResponsesToEntities(searchResult as List<ResultsItem>)
+                    searchResultEntities.forEach { movie ->
+                        movie.isFavorite = favoriteMovies.containsKey(movie.id)
+                    }
+                    Log.d("MovieRepository", "Received ${searchResult.size} movies from API")
+                    localDataSource.insertMovie(searchResultEntities)
+                    emit(DataMapper.mapMovieEntitiesToDomain(searchResultEntities))
                 }
                 is ApiResponse.Empty -> {
                     Log.d("MovieRepository", "No movies found for query: $query")

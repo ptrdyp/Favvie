@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.core.R
+import com.dicoding.favvie.R
 import com.dicoding.favvie.core.data.local.room.SettingPreferences
 import com.dicoding.favvie.core.data.local.room.dataStore
 import com.dicoding.favvie.presentation.SettingViewModel

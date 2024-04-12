@@ -11,6 +11,7 @@ import com.dicoding.favvie.core.domain.repository.IMovieRepository
 import com.dicoding.favvie.core.utils.AppExecutors
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
+import okhttp3.CertificatePinner
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -37,6 +38,12 @@ val databaseModule = module {
 
 val networkModule = module {
     single {
+        val hostname = "favvie.com"
+        val certificatePinner = CertificatePinner.Builder()
+            .add(hostname, "sha256/Pz9/+q7MnMN/ZTYCJ8MucGFzdc38B0G+Y/mweg+Mq9o=")
+            .add(hostname, "sha256/J2/oqMTsdhFWW/n85tys6b4yDBtb6idZayIEBx7QTxA=")
+            .add(hostname, "sha256/diGVwiVYbubAI3RW4hB9xU8e/CH2GnkuvVFZE8zmgzI=")
+            .build()
         val authInterceptor = Interceptor { chain ->
             val req = chain.request()
             val mySuperSecretKey = BuildConfig.KEY
@@ -50,6 +57,7 @@ val networkModule = module {
             .addInterceptor(authInterceptor)
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
+            .certificatePinner(certificatePinner)
 
         if (BuildConfig.DEBUG) {
             val loggingInterceptor = HttpLoggingInterceptor().apply {

@@ -21,7 +21,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var broadcastReceiver: BroadcastReceiver
+    private var broadcastReceiver: BroadcastReceiver? = null
     private lateinit var binding: ActivityMainBinding
     private lateinit var movieAdapter: MovieAdapter
     private val mainViewModel: MainViewModel by viewModel()
@@ -112,6 +112,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        unregisterReceiver(broadcastReceiver)
+        broadcastReceiver?.let { unregisterReceiver(it) }
     }
 }

@@ -15,7 +15,7 @@ object DataMapper {
                 title = it.title,
                 posterPath = it.posterPath ?: "",
                 voteAverage = it.voteAverage,
-                voteCount = it.voteCount,
+                voteCount = it.voteCount ?: 0,
                 isFavorite = false
             )
 

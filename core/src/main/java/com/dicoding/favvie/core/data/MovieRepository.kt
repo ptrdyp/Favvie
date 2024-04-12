@@ -67,7 +67,7 @@ class MovieRepository(
                     emit(emptyList())
                 }
                 is ApiResponse.Error -> {
-                    error("Error has found")
+                    error("Error has found: ${apiService.errorMessage}")
                 }
             }
         }.flowOn(Dispatchers.IO)

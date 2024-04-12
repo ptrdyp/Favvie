@@ -6,7 +6,6 @@
     <string name="movie_title">Judul Film</string>
     <string name="tools_rating">7.6</string>
     <string name="sinopsis">Sinopsis Film</string>
-    <string name="genre">Genre</string>
     <string name="poster_film">Poster Film</string>
     <string name="error_loading_data">Failed to load data. Please try again later.</string>
     <string name="movie_poster">Movie Poster</string>
@@ -15,7 +14,6 @@
     <string name="tambah_ke_favorit">Tambah ke favorit</string>
     <string name="detail_movie">Detail Movie</string>
     <string name="favorite_movie">Favorite Movie</string>
-    <string name="gagal_memuat_data_silakan_coba_kembali">Gagal memuat data, silakan coba kembali</string>
     <string name="favorite_removed">Favorite Removed</string>
     <string name="added_to_favorite">Added to Favorite</string>
     <string name="dark_mode">Dark Mode</string>
